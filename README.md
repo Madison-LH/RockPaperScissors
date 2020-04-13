@@ -13,5 +13,5 @@ Create a GUI that will simulate the game Rock Paper Scissors using radio buttons
 
 4. Implement a game play function
 
-![alt text](https://github.com/andreaej/RockPaperScissors/blob/master/Screen%20Shot%202020-04-12%20at%2011.09.47%20PM.png)
+![alt text](https://github.com/andreaej/RockPaperScissors/blob/master/Screen%20Shot%202020-04-12%20at%2011.12.24%20PM.png)
 
