@@ -1,49 +1,53 @@
-import tkinter
-import tkinter.messagebox as box
+rom tkinter import *
+import random
 
-class MyGUI:
-    def __init__(self):
-        # Create the main window.
-        self.mainWindow = tkinter.Tk()
-        self.mainWindow.geometry("200x200")
+choices = ['rock', 'paper', 'scissors']
 
-        # Create two frames. One for the Radiobuttons
-        # and another for the regular Button widgets.
-        self.radioFrame = tkinter.Frame(self.mainWindow)
-        # self.middle_frame = tkinter.Frame(self.main_window)
-        self.buttonFrame = tkinter.Frame(self.mainWindow)
 
-        # Create an IntVar object to use with
-        # the Radiobuttons.
-        self.radioVar = tkinter.StringVar()
+def decidewinner():
+    user = choices[var.get()]
+    computer = random.choice(choices)
+    result_string = ''
+    if user == computer:
+        result_string = 'Tie'
+    else:
+        if user == 'paper' and computer == 'rock':
+            result_string = 'User won'
+        if user == 'rock' and computer == 'scissors':
+            result_string = 'User won'
+        if user == 'scissors' and computer == 'paper':
+            result_string = 'User won'
 
-        # Set the intVar object to 1.
-        self.radioVar.set(1)
+        if user == 'rock' and computer == 'paper':
+            result_string = 'Computer won'
+        if user == 'scissors' and computer == 'rock':
+            result_string = 'Computer won'
+        if user == 'paper' and computer == 'scissors':
+            result_string = 'Computer won'
 
-        # Create the Radiobutton widgets in the top_frame.
-        self.rb1 = tkinter.Radiobutton(self.radioFrame, text='Option 1', variable=self.radioVar, value='Option 1')
-        self.rb2 = tkinter.Radiobutton(self.radioFrame, text='Option 2', variable=self.radioVar, value='Option 2')
+    user_choice.config(text='User choice:' + user.upper())
+    computer_choice.config(text='Computer choice:' + computer.upper())
+    result.config(text='Result:' + result_string.upper(), fg='Green')
 
-        # Pack the Radiobuttons.
-        self.rb1.pack()
-        self.rb2.pack()
 
-        # Set up buttons
-        self.okButton = tkinter.Button(self.buttonFrame, text='OK', command=self.showOption)
-        self.quitButton = tkinter.Button(self.buttonFrame, text='Quit', command=self.mainWindow.destroy)
+root = Tk()
+root.title("Rock,Paper,Scissors")
+var = IntVar()
 
-        # Pack the Buttons.
-        self.okButton.pack(side='left')
-        self.quitButton.pack(side='left')
+r1 = Radiobutton(root, text="Rock", variable=var, value=0, command=decidewinner)
+r1.pack(anchor=W)
+r2 = Radiobutton(root, text="Paper", variable=var, value=1, command=decidewinner)
+r2.pack(anchor=W)
+r3 = Radiobutton(root, text="Scissors", variable=var, value=2, command=decidewinner)
+r3.pack(anchor=W)
 
-        # Pack the frames.
-        self.radioFrame.pack()
-        self.buttonFrame.pack()
+user_choice = Label(root)
+user_choice.pack(anchor=W)
+computer_choice = Label(root)
+computer_choice.pack(anchor=W)
+result = Label(root)
+result.pack(anchor=W)
 
-        # Start the mainloop.
-        tkinter.mainloop()
-
-    def showOption(self):
-        box.showinfo('Selection', 'You selected ' + self.radioVar.get())
-
-demoGUI = MyGUI()
+root.geometry('300x150')
+root.resizable(False, False)
+root.mainloop()
